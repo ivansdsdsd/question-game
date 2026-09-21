@@ -90,9 +90,9 @@
 
     <header class="bg-slate-900/90 border-b border-slate-800 px-4 py-2 flex items-center justify-between shrink-0 z-50">
         <div class="flex items-center space-x-3">
-            <span class="bg-purple-600 text-white text-xs font-black px-2.5 py-1 rounded">V4.0 4K CMS & 弧形屏</span>
-            <h1 class="text-base font-bold text-slate-200 hidden md:block">4 隊 Android 觸控屏 (94.32×53.14cm) × 弧形 LED 冠軍屏 (7.68×1.44m)</h1>
-            <span class="text-slate-500 text-xs hidden lg:inline">｜ 4人/屏 ｜ 分數左側秒數倒計時 ｜ 4K 控場 CMS</span>
+            <span class="bg-purple-600 text-white text-xs font-black px-2.5 py-1 rounded">V4.0</span>
+            <h1 class="text-base font-bold text-slate-200 hidden md:block">LED</h1>
+            <span class="text-slate-500 text-xs hidden lg:inline">｜ 4人/屏</span>
         </div>
 
         <!-- 視圖切換 Tab -->
@@ -102,16 +102,16 @@
                 全視圖總覽
             </button>
             <button onclick="switchView('touch1')" id="btn-touch1" class="px-2 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-red-500"></span> 螢幕 1 (紅隊)
+                <span class="w-2 h-2 rounded-full bg-red-500"></span> 螢幕 1
             </button>
             <button onclick="switchView('touch2')" id="btn-touch2" class="px-2 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-blue-500"></span> 螢幕 2 (藍隊)
+                <span class="w-2 h-2 rounded-full bg-blue-500"></span> 螢幕 2
             </button>
             <button onclick="switchView('touch3')" id="btn-touch3" class="px-2 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span> 螢幕 3 (黃隊)
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span> 螢幕 3
             </button>
             <button onclick="switchView('touch4')" id="btn-touch4" class="px-2 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 螢幕 4 (綠隊)
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 螢幕 4
             </button>
             <button onclick="switchView('led')" id="btn-led" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition flex items-center gap-1">
                 <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -126,7 +126,7 @@
         <!-- 快捷測試按鈕 -->
         <div class="flex items-center space-x-2 text-xs">
             <button onclick="autoJoinPartial()" class="px-2 py-1 bg-indigo-900/60 hover:bg-indigo-800 text-indigo-200 border border-indigo-700 rounded-lg transition" title="模擬缺人就位點擊 BAN 屏">
-                ⚡ 模擬缺人狀態 (測試 BAN 屏)
+                模擬缺人狀態 (測試BAN位效果)
             </button>
             <button onclick="resetGame()" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700 transition">
                 ↺ 重置全場
@@ -135,91 +135,6 @@
     </header>
 
     <main id="app-container" class="flex-1 overflow-hidden p-3 relative">
-
-        <!-- VIEW A: 全視圖總覽 (DASHBOARD MODE) -->
-        <div id="view-dashboard" class="h-full grid grid-cols-12 gap-3 overflow-y-auto no-scrollbar">
-            
-            <!-- 左側：4 個 Android 實體觸控屏預覽 (94.32cm x 53.14cm 比例) -->
-            <div class="col-span-12 lg:col-span-7 bg-slate-900 rounded-2xl p-2.5 border border-slate-800 flex flex-col h-[700px] lg:h-full overflow-y-auto">
-                <div class="flex items-center justify-between px-3 py-1.5 mb-2 bg-slate-950/80 rounded-xl shrink-0 border border-slate-800">
-                    <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        4 個 Android 觸控屏 (規格: 94.32cm × 53.14cm ｜ 4人/屏)
-                    </span>
-                    <span class="text-[10px] text-amber-400 font-mono">頂部 P1/P2 180° 對向 ｜ 玩家分數左側帶 CMS 倒計時</span>
-                </div>
-
-                <!-- 2x2 顯示 4 個隊伍 Android 觸控屏 (實體 94.32cm x 53.14cm 比例) -->
-                <div class="flex-1 grid grid-cols-2 gap-2">
-                    <!-- Team 1 Android Screen -->
-                    <div class="bg-black/80 rounded-xl p-1.5 border border-red-900/50 flex flex-col justify-between aspect-android shadow-lg">
-                        <div class="flex justify-between items-center text-[10px] bg-red-950/60 px-2 py-1 rounded text-red-300 font-bold shrink-0 border border-red-800/40">
-                            <span>Android 觸控屏 1 (紅龍隊)</span>
-                            <span id="dash-t1-score" class="font-mono text-amber-400">0 分</span>
-                        </div>
-                        <div id="dash-t1-grid" class="grid grid-cols-2 gap-1 flex-1 mt-1"></div>
-                    </div>
-
-                    <!-- Team 2 Android Screen -->
-                    <div class="bg-black/80 rounded-xl p-1.5 border border-blue-900/50 flex flex-col justify-between aspect-android shadow-lg">
-                        <div class="flex justify-between items-center text-[10px] bg-blue-950/60 px-2 py-1 rounded text-blue-300 font-bold shrink-0 border border-blue-800/40">
-                            <span>Android 觸控屏 2 (藍鯊隊)</span>
-                            <span id="dash-t2-score" class="font-mono text-amber-400">0 分</span>
-                        </div>
-                        <div id="dash-t2-grid" class="grid grid-cols-2 gap-1 flex-1 mt-1"></div>
-                    </div>
-
-                    <!-- Team 3 Android Screen -->
-                    <div class="bg-black/80 rounded-xl p-1.5 border border-amber-900/50 flex flex-col justify-between aspect-android shadow-lg">
-                        <div class="flex justify-between items-center text-[10px] bg-amber-950/60 px-2 py-1 rounded text-amber-300 font-bold shrink-0 border border-amber-800/40">
-                            <span>Android 觸控屏 3 (黃虎隊)</span>
-                            <span id="dash-t3-score" class="font-mono text-amber-400">0 分</span>
-                        </div>
-                        <div id="dash-t3-grid" class="grid grid-cols-2 gap-1 flex-1 mt-1"></div>
-                    </div>
-
-                    <!-- Team 4 Android Screen -->
-                    <div class="bg-black/80 rounded-xl p-1.5 border border-emerald-900/50 flex flex-col justify-between aspect-android shadow-lg">
-                        <div class="flex justify-between items-center text-[10px] bg-emerald-950/60 px-2 py-1 rounded text-emerald-300 font-bold shrink-0 border border-emerald-800/40">
-                            <span>Android 觸控屏 4 (綠鷹隊)</span>
-                            <span id="dash-t4-score" class="font-mono text-amber-400">0 分</span>
-                        </div>
-                        <div id="dash-t4-grid" class="grid grid-cols-2 gap-1 flex-1 mt-1"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 右側：LED 曲面大屏 (7.68m x 1.44m) & CMS 控場 -->
-            <div class="col-span-12 lg:col-span-5 flex flex-col gap-3 h-[700px] lg:h-full">
-                <!-- LED 中央大屏 (7.68m x 1.44m 比例) -->
-                <div class="bg-slate-900 rounded-2xl p-2.5 border border-slate-800 flex flex-col h-[50%] relative overflow-hidden">
-                    <div class="flex items-center justify-between px-3 py-1 mb-1.5 bg-slate-950/80 rounded-xl shrink-0 border border-slate-800">
-                        <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                            曲面 LED 大屏 (正面 5.44m + 右側面 2.24m × 高度 1.44m)
-                        </span>
-                        <span id="dash-led-status" class="text-[10px] text-blue-400 font-mono">IDLE</span>
-                    </div>
-                    <div id="dash-led-container" class="flex-1 rounded-xl bg-slate-950 overflow-hidden relative border border-slate-800">
-                        <!-- LED 動態內容 -->
-                    </div>
-                </div>
-
-                <!-- CMS 控制台 (4K 3840x2160 架構) -->
-                <div class="bg-slate-900 rounded-2xl p-3 border border-slate-800 flex flex-col h-[50%] overflow-hidden">
-                    <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-800 shrink-0">
-                        <span class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                            Host 主控台 CMS (適配 3840×2160 4K 解析度)
-                        </span>
-                        <span class="text-[10px] text-slate-400 font-mono">LAN 廣播同步</span>
-                    </div>
-                    <div id="dash-host-container" class="flex-1 overflow-y-auto no-scrollbar flex flex-col gap-2">
-                        <!-- Host 控制項 -->
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- VIEW B: 單獨立屏 - 觸控屏 1 ~ 4 全屏模式 (實體 94.32cm x 53.14cm ~16:9 比例) -->
         <div id="view-touch1" class="h-full hidden bg-slate-950 rounded-2xl p-3 border border-red-900/60 flex flex-col items-center justify-center">
@@ -590,8 +505,8 @@
                                 <div class="w-6 h-6 rounded-full bg-rose-600/30 text-rose-500 border border-rose-500/60 flex items-center justify-center mb-1 text-xs font-bold shadow-lg">
                                     🚫
                                 </div>
-                                <span class="text-[11px] font-black text-rose-400">屏已被 BAN 禁賽</span>
-                                <span class="text-[9px] text-slate-400 mt-0.5">開賽前未點擊就位</span>
+                                <span class="text-[11px] font-black text-rose-400">Not Joined</span>
+                                <span class="text-[9px] text-slate-400 mt-0.5">x</span>
                                 <span class="text-[8px] bg-rose-950/90 text-rose-300 border border-rose-800 px-1 py-0.5 rounded mt-1 font-mono">
                                     ${player.name} (無權限)
                                 </span>
